@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+      <title>YourContractor.com</title>
+      <link rel="stylesheet" href="login.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300&family=Kanit:wght@300;500;700&family=Lato:ital,wght@0,100;0,300;1,700&display=swap" rel="stylesheet">
+      <link rel="shortcut icon" href="images/favicon.png"/>
+       
+    </head>
+
+    <body>
+      <div class="mainpage">
+        <div class="login-box" style="background: #fff;">
+          <h1>Register</h1>
+          <p>Already have an account? Login <a href="login.html">here</a></p>
+          <form >
+              <div class="login-group">
+                  <table>
+                    <tr>
+                        <td class= "login">Enter email as username:</td>
+                        <td><input id= "reg-email" type= "email" ></td>
+                    </tr>
+                    <tr>
+                        <td class = "login" >Enter your password:</td>
+                        <td><input id = "reg-pwd"type = "text" ></td>
+                    </tr>
+                    <tr>
+                        <td class = "login">Confirm your password:</td>
+                        <td><input id="reg-pwd2"type = "text" ></td>
+                    </tr>
+                </table>
+                <p>Continue as a <a href="feed.html">guest</a></p>
+                  <button class="loginbtn" onclick="doRegister()" >Register</button>
+              </div>
+          </form>
+
+
+        </div>
+      </div>
+      <script src="script.js"></script>
+    </body>
+    
+</html>    

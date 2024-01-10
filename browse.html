@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html>
+    <title>Contractor Pro | Browse Services</title>
+    <link rel= "stylesheet" href= "contractor_home.css">
+    <link rel="stylesheet" href="browseStyle.css">
+    <script src= "browse.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyDmID1lwMhjTimTKGMNSVR4x6jBIb6Hdmc">
+    <script src="https://kit.fontawesome.com/6566835b4f.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300&family=Kanit:wght@300;500;700&family=Lato:ital,wght@0,100;0,300;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="shortcut icon" href="images/favicon.png"/>
+    <script src="https://kit.fontawesome.com/6566835b4f.js" crossorigin="anonymous"></script> 
+
+    <head>
+
+    </head>
+
+    <body>
+        
+        <!-- Navigation bar -->
+      <nav class="navMargin navDiv">
+        <div id = "my-burger-links" class="burger-links">
+          <a href="javascript:void(0)" class="closebtn" style="text-align: right;" onclick="closeNav()">×</a>
+          <a href="feed.html">Home</a>
+          <button class="browse-dropdown-btn">Browse <i class="fa fa-caret-down"></i></button>
+          <div class="browse-container">
+            <a href="browse.html" onclick= "goToBrowseAll(); updateCHeader('BrowseAll'); goToResults(); filterSelection('all');" style="font-size: 20px;">By Region</a>
+            <button class="servicesbtn" style="font-size: 20px;">By Services <i class="fa fa-caret-down"></i></button>
+            <div class="services-container">
+              <a href="browse.html" onclick= "goToBrowseAll(); updateCHeader('BrowseAll'); goToResults(); filterSelection('all');" style="font-size: 20px;">Browse All</a> 
+                  <a href="browse.html" onclick= "goToBrowseAppliance(); updateCHeader('Appliance Repair'); goToResults(); filterSelection('appliance');"style="font-size: 20px;">Appliance Repairs</a>
+                  <a href="browse.html" onclick= "goToBrowseBasement(); updateCHeader('Basement Renovation'); goToResults(); filterSelection('basement');"style="font-size: 20px;">Basement Renovation</a>
+                  <a href="browse.html" onclick= "goToBrowseBathroom(); updateCHeader('Bathroom Renovation'); goToResults(); filterSelection('bathroom');" style="font-size: 20px;">Bathroom Renovation</a>
+                  <a href="browse.html" onclick= "goToBrowseDrywall(); updateCHeader('Drywalling'); goToResults(); filterSelection('drywall');" style="font-size: 20px;">Drywalling</a>
+                  <a href="browse.html" onclick= "goToBrowseElectric(); updateCHeader('Electrical'); goToResults(); filterSelection('electric');" style="font-size: 20px;">Electrical</a>
+                  <a href="browse.html" onclick= "goToBrowseKitchen(); updateCHeader('Kitchen Remodeling'); goToResults(); filterSelection('kitchen');" style="font-size: 20px;">Kitchen Remodeling</a>
+                  <a href="browse.html" onclick= "goToBrowseLandscaping(); updateCHeader('Landscaping'); goToResults(); filterSelection('landscaping');" style="font-size: 20px;">Landscaping</a>
+                  <a href="browse.html" onclick= "goToBrowsePainting(); updateCHeader('Painting'); goToResults(); filterSelection('painting');" style="font-size: 20px;">Painting</a>
+                  <a href="browse.html" onclick= "goToBrowsePlumbing(); updateCHeader('Plumbing'); goToResults(); filterSelection('plumbing');"style="font-size: 20px;">Plumbing</a>
+                  <a href="browse.html" onclick= "goToBrowseRoofing(); updateCHeader('Roofing'); goToResults(); filterSelection('roofing');"style="font-size: 20px;">Roofing</a>
+
+            </div>
+          </div>
+          <div class="nav-footer">
+            <a href="user_home.html" style="font-size: 20px;">Profile <i class="fa fa-user"></i></a>
+            <a href="settings.html" style="font-size: 20px;">Settings <i class="fa fa-cog"></i></a>
+          </div>
+        </div>
+
+        <div id="main">
+          <button class="openbtn" onclick="toggleNav()"><p id="burgerText" style="margin: 0;">☰</p></button>
+        </div>
+
+        <div class="website-icon">
+            <button href= "feed.html" onclick= "goToLandingPage();">Contractor Pro</button>        </div>
+
+        <!-- Search bar -->
+        <div class="search-location-bars">
+          <input type="search" id="searchInput"  placeholder="Basement Renovations" oninput="showSuggestions()" style="width: 400px;">
+          <button><i class="fa fa-map-marker" style="font-size: 25px;"></i></button>
+          <div id="suggestions-container" class="suggestions-dropdown"></div>
+        </div>
+
+        <!-- My Account Button -->
+        <div class="login-signup">
+          <button class = "my-account" onclick="goToUserHomePage()">My Account <i class="fa fa-user"></i></button>
+        </div>
+
+      </nav>
+
+
+
+
+
+<!-- ******************browse page**************** -->
+
+
+
+
+
+    <div class = "mainpage" onload= "initialMap();"> 
+        <div class = "browse">
+            <!-- <div class = "breadcrumb">
+                <h3 class = "breadcrumb">Main > Browse</h3>
+            </div> -->
+         
+            <div class= "doll_list_header">
+                    
+                    <div class = "service-mp_header" >
+                        <h2>Service List</h2>
+                    </div>
+                    <div class = "service-mp_header-doll">
+                        <h2>Services by Space</h2>
+                    </div> 
+                </div>
+
+            <div class = "doll_and_list" id= "doll_and_list">
+                
+                
+                <div class = "serviceList">
+                       
+                    <p onclick="updateCHeader('Browse All'); goToResults(); filterSelection('all');" class = "item" class = "browseAll">Browse All</p>
+                                                   
+                        <div class = "list">
+                            <ul class = "slist.left">
+                                <li onclick="updateCHeader('Appliance Repair'); goToResults(); filterSelection('appliance');" class = item >Appliance Repair</li>
+                                <li onclick="updateCHeader('Basement Renovation'); goToResults(); filterSelection('basement');" class = item >Basement Renovation</li>
+                                <li onclick="updateCHeader('Bathroom Renovation'); goToResults(); filterSelection('bathroom');" class = item >Bathroom Renovation</li>
+                                <li onclick="updateCHeader('Carpeting'); goToResults(); filterSelection('carpet');" class = item>Carpeting</li>
+                                <li onclick="updateCHeader('Cleaning Services'); goToResults(); filterSelection('cleaning');" class = item>Cleaning Services</li>
+                                <li onclick="updateCHeader('Drywalling'); goToResults(); filterSelection('drywall');" class = item>Drywalling</li>
+                                <li onclick="updateCHeader('Electrical'); goToResults(); filterSelection('electric');" class = item>Electrical</li>
+                                <li onclick="updateCHeader('Flooring'); goToResults(); filterSelection('flooring');" class = item>Flooring</li>
+                                <li onclick="updateCHeader('Foundation'); goToResults(); filterSelection('foundation');" class = item>Foundation</li>
+                                <li onclick="updateCHeader('Heating and Cooling'); goToResults(); filterSelection('heating-cooling');" class = item>Heating and Cooling</li>
+                            </ul>
+                        
+                            <ul class = "slist.right">
+                                <li onclick="updateCHeader('Insulation'); goToResults(); filterSelection('insulation');" class = item>Insulation</li>
+                                <li onclick="updateCHeader('Landscaping'); goToResults(); filterSelection('landscaping');" class = item>Landscaping</li>
+                                <li onclick="updateCHeader('Painting'); goToResults(); filterSelection('painting');" class = item>Painting</li>
+                                <li onclick="updateCHeader('Plumbing'); goToResults(); filterSelection('plumbing');" class = item>Plumbing</li>
+                                <li onclick="updateCHeader('Roofing'); goToResults(); filterSelection('roofing');" class = item>Roofing</li>
+                                <li onclick="updateCHeader('Siding'); goToResults(); filterSelection('siding');" class = item>Siding</li>
+                                <li onclick="updateCHeader('Tree Services'); goToResults(); filterSelection('tree-services');" class = item>Tree Services</li>
+                                <li onclick="updateCHeader('Tiling'); goToResults(); filterSelection('tiling');" class = item>Tiling</li>
+                                <li onclick="updateCHeader('Water Heating'); goToResults(); filterSelection('water-heating');" class = item>Water Heating</li>
+                                <li onclick="updateCHeader('Windows and Doors'); goToResults(); filterSelection('windows-doors');" class = item>Windows and Doors</li>
+                            </ul>
+                        </div>
+                        
+                </div>
+                <div class = "dollhouse">
+                    
+
+                    <img class = "dollImg" src="dollhouse-PhotoRoom.png"> 
+                    <div class= "doll-buttons">
+                    <button onclick="updateCHeader('Kitchen'); goToResults(); filterSelection('kitchen');" class = "doll-kitchen">Kitchen</button>
+                    <button onclick="updateCHeader('Bathroom'); goToResults(); filterSelection('bathroom');" class = "doll-bathroom">Bathroom</button>
+                    <button onclick="updateCHeader('Utility'); goToResults(); filterSelection('utility');" class = "doll-utility">Utility</button>
+                    <button onclick="updateCHeader('Bathroom'); goToResults(); filterSelection('bathroom');"class = "doll-bathroom2">Bathroom</button>
+                    <button onclick="updateCHeader('Nursery'); goToResults(); filterSelection('nursery');"class = "doll-nursery">Nursery</button>
+                    <button onclick="updateCHeader('Bedroom'); goToResults(); filterSelection('bedroom');"class = "doll-bedroom">Bedroom</button>
+                    <!-- <button class = "doll-attic"></button> -->
+                    <button onclick="updateCHeader('Attic'); goToResults(); filterSelection('attic');" class = "doll-attic-text">Attic</button>
+                    <button onclick="updateCHeader('Office'); goToResults(); filterSelection('office');" class = "doll-office">Office</button>
+                    </div>
+                </div>
+                
+            </div>
+
+            <div class = "results resultsBuffer" id = "results" >
+                    <p> </p>
+
+            </div>
+        
+            <div class= "results1" >
+                <div class = "contractor_list">
+                    <h2 id= "cHeader">Contractor List: Browse All</h2>
+                    
+                </div>
+            
+                <div class = "sort">
+                    
+                    <h2 style="padding-left: 15px;">Sort:</h2>
+                    <div class = "sort_options">
+                        <select class="sort-dropdown" name="distance" id="distance" onchange="filterSort('distance',value);">
+                            <option value="all" >by Radius</option>
+                            <option value="5km" >5km Radius</option>
+                            <option value="10km" >10km Radius</option>
+                            <option value="20km">20km Radius</option>
+
+                            
+                        </select>
+                        <select class="sort-dropdown" name="price" id="price" onchange="filterSort('price',value);">
+                            <option value="all" onload="">by Price</option>
+                            <option value="$1" >$</option>
+                            <option value="$2" >$$</option>
+                            <option value="$3" >$$$</option>
+ 
+
+                            
+                        </select>
+                        <select class="sort-dropdown" name="reviews" id="reviews" onchange="filterSort('reviews',value);">
+                            <option value="all">by Reviews</option>
+                            <option value="5star" >5 Star</option>
+                            <option value="4star" >4 Star</option>
+                            <option value="3star">3 Star</option>
+                            <option value="2star">2 Star</option>
+                            <option value="1star">1 Star</option>
+                            
+                        </select>
+                    </div>
+                    <div class = "toggle" id= "toggle">
+                        <p style= "padding-right: 10px; margin-bottom: 5px; margin-left: 30px;">List</p>
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider" onclick= "switchVisible(); "></span>
+                        </label>
+                        <p style= "padding-left: 10px; margin-bottom: 5px; ">Map</p>
+                    </div>
+                    
+                </div>
+                <div class = "clist sortAll show" id = "clist">
+                    <ul class="clist" >
+                        <li id = "filterContractors" class="clisting all $1 5star office bedroom bathroom nursery painting drywall carpet flooring" data-clisting = "1">
+                            <div class = "c-info">
+                                <div class = "clisting1">
+                                    <h2 class = "clistingName" id= "c1" onclick="gotoc1();">Innovate Renovations</h2>
+                                    <div class = cIconInfo>
+                                        <h3 class = "price">$</h3>
+                                        <div class = "c-rating">
+                                            <p> 
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star "></i>
+                                                <i class="fa fa-star "></i>
+                                                <i class="fa fa-star "></i>
+                                                <i class="fa fa-star "></i>
+                                            </p>
+                                        </div>
+                                        <i class="fa fa-heart" id="heart" onclick= "favourite('heart');" ></i>
+                                    </div>
+                                </div>
+                                <div class = "description">
+                                    <p>Here at Innovate Renovations we provide you with a family first aspect. 
+                                        We have three generations of family members here at Innovate Renovations. 
+                                        We are 100% family owned and operated with over 30 years of experience under our tool belts.
+                                        We have been proudly serving Winnipeg and the surrounding areas for over three decades.</p>
+                                </div>
+                                <div class = "c-listing-buttons">
+                                    <div class="important-btns">
+                                        <button class = "listingbuttons" onclick="goToScedulePage()">Schedule</button>
+                                        <button  class= "contact listingbuttons" onclick="contact('contact1')">Contact<span class="popuptext" id= "contact1">111-111-1111</span></button>
+                                        <button class = "listingbuttons"onclick="goToQuotePage()">Get a Quote</button>
+                                        <button class = "listingbuttons" onclick="scrollWriteReviewSection()"> Write a Review </button>
+                                      </div>
+
+                                </div>
+                            </div>
+                            
+                            <img class = "listing-img" src="images/innovate_reno.jpeg">
+                            
+                        </li>
+                        <li id = "filterContractors" class = "clisting all $1 10km 5star appliance electric kitchen water-heating cleaning tiling" data-clisting = "1">
+                            <div class = "c-info">
+                                <div class = "clisting1">
+                                    <h2 class = "clistingName" id= "c2" onclick="gotoc2();">Kitchen Kings</h2>
+                                    <div class = cIconInfo>
+                                        <h3 class = "price">$</h3>
+                                        <div class = "c-rating">
+                                            <p>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                            </p>
+                                        </div>
+                                        <i class="fa fa-heart" id="heart1" onclick= "favourite('heart1');" ></i>
+                                    </div>
+                                </div>
+                                <div class = "description">
+                                    <p>Step into the realm of culinary excellence with Kitchen King, your ultimate destination for top-tier kitchen solutions. As a beacon of innovation and style, we take pride in transforming your kitchen into a masterpiece of functionality and aesthetics. At Kitchen King, we blend cutting-edge design with practicality to create spaces that inspire culinary creativity and elevate the heart of your home.</p>
+                                </div>
+                                <div class = "c-listing-buttons">
+                                    <div class="important-btns">
+                                        <button class = "listingbuttons" onclick="goToScedulePage()">Schedule</button>
+                                        <button class= "contact listingbuttons" onclick="contact('contact2')">Contact<span class="popuptext" id= "contact2">222-222-2222</span></button>
+                                        <button class = "listingbuttons"onclick="goToQuotePage()">Get a Quote</button>
+                                        <button  class = "listingbuttons" onclick="scrollWriteReviewSection()"> Write a Review </button>
+                                      </div>
+
+                                </div>
+                                </div>
+                            
+                            <img class = "listing-img" src="images/kitchen_jd.jpeg">
+                            
+                        </li>
+                        <li id = "filterContractors" class= "clisting all $2 5km 3star bathroom drywall flooring electric painting tiling plumbing utility" data-clisting = "2">
+                            <div class = "c-info">
+                                <div class = "clisting1">
+                                    <h2  class = "clistingName" id= "c3" onclick="gotoc3();">Smith & Sons Pvt Ltd</h2>
+                                    <div class = cIconInfo>
+                                        <h3 class = "price">$$</h3>
+                                        <div class = "c-rating">
+                                            <p style = "justify-content:flex-end;"> 
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa-regular fa-star"></i>
+                                                <i class="fa-regular fa-star"></i>
+                                            </p>
+                                        </div>
+                                        <i class="fa fa-heart" id="heart2" onclick= "favourite('heart2');" ></i>
+                                    </div>
+                                </div>
+                                <div class = "description">
+                                    <p>Welcome to Smith & Sons Construction, where dreams take shape and visions become reality. With a legacy of craftsmanship and a commitment to excellence, we stand as your trusted partner in building the spaces you envision. From concept to completion, Smith & Sons Construction is dedicated to delivering quality construction services tailored to your unique needs.</p>
+                                </div>
+                                <div class = "c-listing-buttons">
+                                    <div class="important-btns">
+                                        <button class = "listingbuttons" onclick="goToScedulePage()">Schedule</button>
+                                        <button class= "contact listingbuttons" onclick="contact('contact3')">Contact<span class="popuptext" id= "contact3">333-333-3333</span></button>
+                                        <button class = "listingbuttons"onclick="goToQuotePage()">Get a Quote</button>
+                                        <button class = "listingbuttons" onclick="scrollWriteReviewSection()"> Write a Review </button>
+                                      </div>
+
+                                </div>
+                                </div>
+                            
+                            <img class = "listing-img" src="images/smithson.jpeg">
+                            
+                        </li>
+                        <li id = "filterContractors" class= "clisting all $1 20km basement  4star roofing siding attic windows-doors foundation" data-clisting = "1">
+                            <div class = "c-info">
+                                <div class = "clisting1">
+                                    <h2  class = "clistingName" id = "c4" onclick="gotoc4();">Chip Off the Block Builders</h2>
+                                    <div class = cIconInfo>
+                                        <h3 class = "price">$</h3>
+                                        <div class = "c-rating">
+                                            <p>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa-regular fa-star"></i>
+                                            </p>
+                                        </div>
+                                        <i class="fa fa-heart" id="heart3" onclick= "favourite('heart3');" ></i>
+                                    </div>
+                                </div>
+                                <div class = "description">
+                                    <p>Here at Chip Off the Block Builders we provide you with a family first aspect. 
+                                        We have three generations of family members here at Chip Off the Block Builders. 
+                                        We are 100% family owned and operated with over 30 years of experience under our tool belts.
+                                        We have been proudly serving Winnipeg and the surrounding areas for over three decades.</p>
+                                </div>
+                                <div class = "c-listing-buttons">
+                                    <div class="important-btns">
+                                        <button class = "listingbuttons" onclick="goToScedulePage()">Schedule</button>
+                                        <button class= "contact listingbuttons" onclick="contact('contact4')">Contact<span class="popuptext" id= "contact4">444-444-4444</span></button>
+                                        <button class = "listingbuttons" onclick="goToQuotePage()">Get a Quote</button>
+                                        <button class = "listingbuttons" onclick="scrollWriteReviewSection()"> Write a Review </button>
+                                      </div>
+
+                                </div>
+                                </div>
+                            
+                            <img class = "listing-img" src="images/innovate_reno.jpeg">
+                            
+                        </li>
+                        <li id = "filterContractors" class="clisting all $3 1star carpet flooring basement bedroom office nursery painting tiling cleaning" data-clisting = "3">
+                            <div class = "c-info">
+                                <div class = "clisting1">
+                                    <h2  class = "clistingName" id="c5" onclick="gotoc5();">Fabulous Carpeting</h2>
+                                    <div class = cIconInfo>
+                                        <h3 class = "price">$$$</h3>
+                                        <div class = "c-rating">
+                                            <p>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa-regular fa-star"></i>
+                                                <i class="fa-regular fa-star"></i>
+                                                <i class="fa-regular fa-star"></i>
+                                                <i class="fa-regular fa-star"></i>
+                                            </p>
+                                        </div>
+                                        <i class="fa fa-heart" id="heart4" onclick= "favourite('heart4');" ></i>
+                                    </div>
+                                </div>
+                                <div class = "description">
+                                    <p>Step into a world of luxury and comfort with Fabulous Carpeting. As your premier destination for exquisite flooring solutions, we bring elegance and style to every step. At Fabulous Carpeting, we redefine the art of interior design, creating spaces that are as remarkable as they are inviting.</p>
+                                </div>
+                                <div class = "c-listing-buttons">
+                                    <div class="important-btns">
+                                        <button class = "listingbuttons" onclick="goToScedulePage()">Schedule</button>
+                                        <button class= "contact listingbuttons" onclick="contact('contact5')">Contact<span class="popuptext" id= "contact5">555-555-5555</span></button>
+                                        <button class = "listingbuttons" onclick="goToQuotePage()">Get a Quote</button>
+                                        <button class = "listingbuttons" onclick="scrollWriteReviewSection()"> Write a Review </button>
+                                      </div>
+
+                                </div>
+                                </div>
+                            
+                            <img class = "listing-img" src="images/carpet_jd.webp">
+                            
+                        </li>
+                        <li id = "filterContractors" class= "clisting all $1 4star 5km drywall insulation painting carpet bedroom nursery office tiling flooring">
+                            <div class = "c-info">
+                                <div class = "clisting1">
+                                    <h2  class = "clistingName" id="c6"onclick="gotoc6();">Knockout Renovation</h2>
+                                    <div class = cIconInfo>
+                                        <h3 class = "price">$</h3>
+                                        <div class = "c-rating">
+                                            <p>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa-regular fa-star"></i>
+                                            </p>
+                                        </div>
+                                        <i class="fa fa-heart" id="heart5" onclick= "favourite('heart5');" ></i>
+                                    </div>
+                                </div>
+                                <div class = "description">
+                                     <p>Here at Knockout Renovation we provide you with a family first aspect. 
+                                        We have three generations of family members here at Knockout Renovation. 
+                                        We are 100% family owned and operated with over 30 years of experience under our tool belts.
+                                        We have been proudly serving Winnipeg and the surrounding areas for over three decades.</p>
+                            
+                                </div>
+                               <div class = "c-listing-buttons">
+                                    <div class="important-btns">
+                                        <button class = "listingbuttons" onclick="goToScedulePage()">Schedule</button>
+                                        <button class= "contact listingbuttons" onclick="contact('contact6')">Contact<span class="popuptext" id= "contact6">666-666-6666</span></button>
+                                        <button class = "listingbuttons" onclick="goToQuotePage()">Get a Quote</button>
+                                        <button  class = "listingbuttons" onclick="scrollWriteReviewSection()"> Write a Review </button>
+                                      </div>
+
+                                </div>
+                                </div>
+                            
+                            <img class = "listing-img" src="images/innovate_reno.jpeg">
+                            
+                        </li>
+                        <li id = "filterContractors" class="clisting all $2 3star landscaping cleaning painting insulation tree-services foundation" data-clisting = "2">
+                            <div class = "c-info">
+                                <div class = "clisting1">
+                                    <h2  class = "clistingName" id="c7"onclick="gotoc7();">Fence Masters</h2>
+                                    <div class = cIconInfo>
+                                        <h3 class = "price">$$</h3>
+                                        <div class = "c-rating">
+                                            <p>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa-regular fa-star"></i>
+                                                <i class="fa-regular fa-star"></i>
+                                            </p>
+                                        </div>
+                                        <i class="fa fa-heart" id="heart6" onclick= "favourite('heart6');" ></i>
+                                    </div>
+                                </div>
+                                <div class = "description">
+                                    <p>Here at Fence Masters we provide you with a family first aspect. 
+                                        We have three generations of family members here at Fence Masters. 
+                                        We are 100% family owned and operated with over 30 years of experience under our tool belts.
+                                        We have been proudly serving Winnipeg and the surrounding areas for over three decades.</p>
+                                
+                                </div>
+                                <div class = "c-listing-buttons">
+                                    <div class="important-btns">
+                                        <button class = "listingbuttons" onclick="goToScedulePage()">Schedule</button>
+                                        <button class= "contact listingbuttons" onclick="contact('contact7')">Contact<span class="popuptext" id= "contact7">777-777-7777</span></button>
+                                        <button class = "listingbuttons" onclick="goToQuotePage()">Get a Quote</button>
+                                        <button class = "listingbuttons" onclick="scrollWriteReviewSection()"> Write a Review </button>
+                                      </div>
+
+                                </div>
+                                </div>
+                            
+                            <img class = "listing-img" src="images/innovate_reno.jpeg">
+                            
+                        </li>
+                        <li id = "filterContractors" class= "clisting all $1 5star 10km appliance electric insulation utility water-heating heating-cooling" data-clisting = "1">
+                            <div class = "c-info">
+                                <div class = "clisting1">
+                                    <h2  class = "clistingName" id="c8"onclick="gotoc8();">Emerge Contractors</h2>
+                                    <div class = cIconInfo>
+                                        <h3 class = "price">$</h3>
+                                        <div class = "c-rating">
+                                            <p>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                            </p>
+                                        </div>
+                                        <i class="fa fa-heart" id="heart7" onclick= "favourite('heart7');" ></i>
+                                    </div>
+                                </div>
+                                <div class = "description">
+                                    <p>Here at Emerge Contractors we provide you with a family first aspect. 
+                                        We have three generations of family members here at Emerge Contractors. 
+                                        We are 100% family owned and operated with over 30 years of experience under our tool belts.
+                                        We have been proudly serving Winnipeg and the surrounding areas for over three decades.</p>
+                                
+                                </div>
+                                <div class = "c-listing-buttons">
+                                    <div class="important-btns">
+                                        <button class = "listingbuttons" onclick="goToScedulePage()">Schedule</button>
+                                        <button class= "contact listingbuttons" onclick="contact('contact8')">Contact<span class="popuptext" id= "contact8">888-888-8888</span></button>
+                                        <button class = "listingbuttons" onclick="goToQuotePage()">Get a Quote</button>
+                                        <button class = "listingbuttons" onclick="scrollWriteReviewSection()"> Write a Review </button>
+                                      </div>
+
+                                </div>
+                                </div>
+                            
+                            <img class = "listing-img" src="images/innovate_reno.jpeg">
+                            
+                        </li>
+                        <li id = "filterContractors" class= "clisting all $3 2star 20km landscaping windows-doors siding attic roofing tree-services basement foundation" data-clisting = "3">
+                            <div class = "c-info">
+                                <div class = "clisting1">
+                                    <h2  class = "clistingName" id="c9"onclick="gotoc9();">Mountain Home Construction</h2>
+                                    <div class = cIconInfo>
+                                        <h3 class = "price">$$$</h3>
+                                        <div class = "c-rating">
+                                            <p>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa-regular fa-star"></i>
+                                                <i class="fa-regular fa-star"></i>
+                                                <i class="fa-regular fa-star"></i>
+                                            </p>
+                                        </div>
+                                        <i class="fa fa-heart" id="heart8" onclick= "favourite('heart8');" ></i>
+                                    </div>
+                                </div>
+                                <div class = "description">
+                                    <p>Here at Mountain Home Construction we provide you with a family first aspect. 
+                                        We have three generations of family members here at Mountain Home Construction. 
+                                        We are 100% family owned and operated with over 30 years of experience under our tool belts.
+                                        We have been proudly serving Winnipeg and the surrounding areas for over three decades.</p>
+                                
+                                </div>
+                                <div class = "c-listing-buttons">
+                                    <div class="important-btns">
+                                        <button class = "listingbuttons" onclick="goToScedulePage()">Schedule</button>
+                                        <button class= "contact listingbuttons" onclick="contact('contact9')">Contact<span class="popuptext" id= "contact9">999-999-9999</span></button>
+                                        <button class = "listingbuttons" onclick="goToQuotePage()">Get a Quote</button>
+                                        <button class = "listingbuttons" onclick="scrollWriteReviewSection()"> Write a Review </button>
+                                      </div>
+
+                                </div>
+                                </div>
+                            
+                            <img class = "listing-img" src="images/innovate_reno.jpeg">
+                            
+                        </li>
+                        <li id = "filterContractors" class= "clisting all $2 1star 5km kitchen plumbing electric painting bathroom tiling utility" data-clisting = "2">
+                            <div class = "c-info">
+                                <div class = "clisting1">
+                                    <h2  class = "clistingName" id="c10"onclick="gotoc10();">Regal Renovations</h2>
+                                    <div class = cIconInfo>
+                                        <h3 class = "price">$$</h3>
+                                        <div class = "c-rating">
+                                            <p> 
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa-regular fa-star"></i>
+                                                <i class="fa-regular fa-star"></i>
+                                                <i class="fa-regular fa-star"></i>
+                                                <i class="fa-regular fa-star"></i>
+                                            </p>
+                                        </div>
+                                        <i class="fa fa-heart" id="heart9" onclick= "favourite('heart9');" ></i>
+                                    </div>
+                                </div>
+                                <div class = "description">
+                                    <p>Here at Regal Renovations we provide you with a family first aspect. 
+                                        We have three generations of family members here at Regal Renovations. 
+                                        We are 100% family owned and operated with over 30 years of experience under our tool belts.
+                                        We have been proudly serving Winnipeg and the surrounding areas for over three decades.</p>
+                                
+                                </div>
+                                <div class = "c-listing-buttons">
+                                    <div class="important-btns">
+                                        <button class = "listingbuttons" onclick="goToScedulePage()">Schedule</button>
+                                        <button class= "contact listingbuttons" onclick="contact('contact10')">Contact<span class="popuptext" id= "contact10">101-101-1010</span></button>
+
+                                        <button class = "listingbuttons" onclick="goToQuotePage()">Get a Quote</button>
+                                        <button class = "listingbuttons" onclick="scrollWriteReviewSection()"> Write a Review </button>
+                                      </div>
+
+                                </div>
+                                </div>
+                            
+                            <img class = "listing-img" src="images/innovate_reno.jpeg">
+                            
+                        </li>
+                        <li id = "filterContractors" class = "clisting all $3 3star 5km insulation drywall painting flooring carpet bedroom nursery office basement" data-clisting = "3">
+                            <div class = "c-info">
+                                <div class = "clisting1">
+                                    <h2  class = "clistingName" id= "c11"onclick="gotoc11();">Home Front Resources</h2>
+                                    <div class = cIconInfo>
+                                        <h3 class = "price">$$$</h3>
+                                        <div class = "c-rating">
+                                            <p> 
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa-regular fa-star"></i>
+                                                <i class="fa-regular fa-star"></i>
+                                            </p>
+                                        </div>
+                                        <i class="fa fa-heart" id="heart10" onclick= "favourite('heart10');" ></i>
+                                    </div>
+                                </div>
+                                <div class = "description">
+                                    <p>Here at Home Front Resources we provide you with a family first aspect. 
+                                        We have three generations of family members here at Home Front Resources. 
+                                        We are 100% family owned and operated with over 30 years of experience under our tool belts.
+                                        We have been proudly serving Winnipeg and the surrounding areas for over three decades.</p>
+                                
+                                </div>
+                                <div class = "c-listing-buttons">
+                                    <div class="important-btns">
+                                        <button class = "listingbuttons" onclick="goToScedulePage()">Schedule</button>
+                                        <button class= "contact listingbuttons" onclick="contact('contact11')">Contact<span class="popuptext" id= "contact11">101-101-1111</span></button>
+                                        <button class = "listingbuttons" onclick="goToQuotePage()">Get a Quote</button>
+                                        <button class = "listingbuttons" onclick="scrollWriteReviewSection()"> Write a Review </button>
+                                      </div>
+
+                                </div>
+                                </div>
+                            
+                            <img class = "listing-img" src="images/innovate_reno.jpeg">
+                            
+                        </li>
+                        <li id = "filterContractors" class= "clisting all $2 5star 5km utility plumbing cleaning appliance heating-cooling water-heating" data-clisting = "2">
+                            <div class = "c-info">
+                                <div class = "clisting1">
+                                    <h2  onclick ="gotoc12();" class="clistingName" id="c12"onclick="gotoc12();">Empire Gen Construction</h2>
+                                    
+                                    <div class = cIconInfo>
+                                        <h3 class = "price">$$</h3>
+                                        <div class = "c-rating">
+                                            <p>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                            </p>
+                                        </div>
+                                        <i class="fa fa-heart" id="heart11" onclick= "favourite('heart11');" ></i>
+                                    </div>
+                                </div>
+                                <div class = "description">
+                                    <p>Welcome to Empire Gen Construction, where dreams take shape and visions become reality. With a legacy of craftsmanship and a commitment to excellence, we stand as your trusted partner in building the spaces you envision. From concept to completion, Empire Gen Construction is dedicated to delivering quality construction services tailored to your unique needs.</p>
+                                
+                                </div>
+                                <div class = "c-listing-buttons">
+                                    <div class="important-btns">
+                                        <button class = "listingbuttons" onclick="goToScedulePage()">Schedule</button>
+                                        <button class= "contact listingbuttons" onclick="contact('contact12')">Contact<span class="popuptext" id= "contact12">121-121-1212</span></button>
+                                        <button class = "listingbuttons" onclick="goToQuotePage()">Get a Quote</button>
+                                        <button class = "listingbuttons" onclick="scrollWriteReviewSection()"> Write a Review </button>
+                                      </div>
+
+                                </div>
+                                </div>
+                            
+                            <img class = "listing-img" src="images/innovate_reno.jpeg">
+                            
+                        </li>
+
+                    </ul>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+                <!-- ********************* MAP***************************** -->
+
+                <div id = "map" class = "map mapContent hide">
+                    <div class = "mapContractors">
+                        <ul class="maplist" >
+                            <li id = "filterContractors" class="maplisting all $1 5star landscaping tree-services foundation" data-clisting = "1">
+                                <div class = "mapInfo">
+                                    <div class = "maplisting1">
+                                        <h2 class = "mapclistingName" id= "c1" onclick="gotoc1();">Innovate Renovations</h2>
+                                        <div class = mapIconInfo>
+                                            <h3 class = "map-price">$</h3>
+                                            <div class = "map-c-rating">
+                                                <p> 
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star "></i>
+                                                    <i class="fa fa-star "></i>
+                                                    <i class="fa fa-star "></i>
+                                                    <i class="fa fa-star "></i>
+                                                </p>
+                                            </div>
+                                            <i class="fa fa-heart" id="heart12" onclick= "favourite('heart12');" ></i>
+                                        </div>
+                                    </div>
+                                   
+                                </div>
+                                
+                                
+                            </li>
+                            <li id = "filterContractors" class = "maplisting all $1 10km 5star appliance electric kitchen water-heating utility" data-clisting = "1">
+                                <div class = "mapInfo">
+                                    <div class = "maplisting1">
+                                        <h2 class = "mapclistingName" id= "c2"onclick="gotoc2();">Kitchen Kings</h2>
+                                        <div class = mapIconInfo>
+                                            <h3 class = "map-price">$</h3>
+                                            <div class = "map-c-rating">
+                                                <p> 
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                </p>
+                                            </div>
+                                            <i class="fa fa-heart" id="heart13" onclick= "favourite('heart13');" ></i>
+                                        </div>
+                                    </div>
+                                    
+                                    </div>
+                                
+                                
+                            </li>
+                            <li id = "filterContractors" class= "maplisting all $2 5km 3star bathroom drywall flooring electric painting plumbing utility" data-clisting = "2">
+                                <div class = "mapInfo">
+                                    <div class = "maplisting1">
+                                        <h2  class = "mapclistingName" id= "c3"onclick="gotoc3();">Smith & Sons Pvt Ltd</h2>
+                                        <div class = mapIconInfo>
+                                            <h3 class = "map-price">$$</h3>
+                                            <div class = "map-c-rating">
+                                                <p style> 
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa-regular fa-star"></i>
+                                                    <i class="fa-regular fa-star"></i>
+                                                </p>
+                                            </div>
+                                            <i class="fa fa-heart" id="heart14" onclick= "favourite('heart14');" ></i>
+                                        </div>
+                                    </div>
+                                    
+                                    </div>
+                                
+                                
+                            </li>
+                            <li id = "filterContractors" class= "maplisting all $1 20km basement  4star carpet drywall foundation flooring insulation painting bedroom office nursery" data-clisting = "1">
+                                <div class = "mapInfo">
+                                    <div class = "maplisting1">
+                                        <h2  class = "mapclistingName" id = "c4"onclick="gotoc4();">Chip Off the Block Builders</h2>
+                                        <div class = mapIconInfo>
+                                            <h3 class = "map-price">$</h3>
+                                            <div class = "map-c-rating">
+                                                <p> 
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa-regular fa-star"></i>
+                                                </p>
+                                            </div>
+                                            <i class="fa fa-heart" id="heart15" onclick= "favourite('heart15');" ></i>
+                                        </div>
+                                    </div>
+                                    
+                                    </div>
+                                
+                                
+                            </li>
+                            <li id = "filterContractors" class="maplisting all $3 1star roofing siding attic windows-doors foundation" data-clisting = "3">
+                                <div class = "mapInfo">
+                                    <div class = "maplisting1">
+                                        <h2  class = "mapclistingName" id="c5"onclick="gotoc5();">Fabulous Carpeting</h2>
+                                        <div class = mapIconInfo>
+                                            <h3 class = "map-price">$$$</h3>
+                                            <div class = "c-rating">
+                                                <p> 
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa-regular fa-star"></i>
+                                                    <i class="fa-regular fa-star"></i>
+                                                    <i class="fa-regular fa-star"></i>
+                                                    <i class="fa-regular fa-star"></i>
+                                                </p>
+                                            </div>
+                                            <i class="fa fa-heart" id="heart16" onclick= "favourite('heart16');" ></i>
+                                        </div>
+                                    </div>
+                                    
+                                    </div>
+                                
+                                
+                            </li>
+                            <li id = "filterContractors" class= "maplisting all $1 4star 5km heating-cooling utility water-heating appliance electric plumbing" data-clisting = "1">
+                                <div class = "mapInfo">
+                                    <div class = "maplisting1">
+                                        <h2  class = "mapclistingName" id="c6"onclick="gotoc6();">Knockout Renovation</h2>
+                                        <div class = mapIconInfo>
+                                            <h3 class = "map-price">$</h3>
+                                            <div class = "map-c-rating">
+                                                <p> 
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa-regular fa-star"></i>
+                                                </p>
+                                            </div>
+                                            <i class="fa fa-heart" id="heart17" onclick= "favourite('heart17');" ></i>
+                                        </div>
+                                    </div>
+                                
+                                   
+                                    </div>
+                                
+                                
+                            </li>
+                            <li id = "filterContractors" class="maplisting all $2 3star office bedroom bathroom nursery painting drywall carpet flooring" data-clisting = "2">
+                                <div class = "mapInfo">
+                                    <div class = "maplisting1">
+                                        <h2  class = "mapclistingName" id="c7"onclick="gotoc7();">Fence Masters</h2>
+                                        <div class = mapIconInfo>
+                                            <h3 class = "map-price">$$</h3>
+                                            <div class = "c-rating">
+                                                <p> 
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa-regular fa-star"></i>
+                                                    <i class="fa-regular fa-star"></i>
+                                                </p>
+                                            </div>
+                                            <i class="fa fa-heart" id="heart18" onclick= "favourite('heart18');" ></i>
+                                        </div>
+                                    </div>
+                                    
+                                    </div>
+                                
+                                
+                            </li>
+                            <li id = "filterContractors" class= "maplisting all $1 5star 10km appliance electric utility water-heating heating-cooling" data-clisting = "1">
+                                <div class = "mapInfo">
+                                    <div class = "maplisting1">
+                                        <h2  class = "mapclistingName" id="c8"onclick="gotoc8();">Emerge Contractors</h2>
+                                        <div class = mapIconInfo>
+                                            <h3 class = "map-price">$</h3>
+                                            <div class = "c-rating">
+                                                <p> 
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                </p>
+                                            </div>
+                                            <i class="fa fa-heart" id="heart19" onclick= "favourite('heart19');" ></i>
+                                        </div>
+                                    </div>
+                                   
+                                    </div>
+                                
+                                
+                            </li>
+                            <li id = "filterContractors" class= "maplisting all $3 2star 20km landscaping windows-doors siding attic roofing tree-services basement foundation" data-clisting = "3">
+                                <div class = "mapInfo">
+                                    <div class = "maplisting1">
+                                        <h2  class = "mapclistingName" id="c9"onclick="gotoc9();">Mountain Home Construction</h2>
+                                        <div class = mapIconInfo>
+                                            <h3 class = "map-price">$$$</h3>
+                                            <div class = "map-c-rating">
+                                                <p> 
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa-regular fa-star"></i>
+                                                    <i class="fa-regular fa-star"></i>
+                                                    <i class="fa-regular fa-star"></i>
+                                                </p>
+                                            </div>
+                                            <i class="fa fa-heart" id="heart20" onclick= "favourite('heart20');" ></i>
+                                        </div>
+                                    </div>
+                                    
+                                    </div>
+                                
+                                
+                            </li>
+                            <li id = "filterContractors" class= "maplisting all $2 1star 5km kitchen plumbing electric painting bathroom utility" data-clisting = "2">
+                                <div class = "mapInfo">
+                                    <div class = "maplisting1">
+                                        <h2  class = "mapclistingName" id="c10"onclick="gotoc10();">Regal Renovations</h2>
+                                        <div class = mapIconInfo>
+                                            <h3 class = "map-price">$$</h3>
+                                            <div class = "map-c-rating">
+                                                <p> 
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa-regular fa-star"></i>
+                                                    <i class="fa-regular fa-star"></i>
+                                                    <i class="fa-regular fa-star"></i>
+                                                    <i class="fa-regular fa-star"></i>
+                                                </p>
+                                            </div>
+                                            <i class="fa fa-heart" id="heart21" onclick= "favourite('heart21');" ></i>
+                                        </div>
+                                    </div>
+                                    
+                                    </div>
+                                
+                                
+                            </li>
+                            <li id = "filterContractors" class = "maplisting all $3 3star 5km insulation drywall painting flooring carpet bedroom nursery office basement" data-clisting = "3">
+                                <div class = "mapInfo">
+                                    <div class = "maplisting1">
+                                        <h2  class = "mapclistingName" id= "c11"onclick="gotoc11();">Home Front Resources</h2>
+                                        <div class = mapIconInfo>
+                                            <h3 class = "map-price">$$$</h3>
+                                            <div class = "map-c-rating">
+                                                <p> 
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa-regular fa-star"></i>
+                                                    <i class="fa-regular fa-star"></i>
+                                                </p>
+                                            </div>
+                                            <i class="fa fa-heart" id="heart22" onclick= "favourite('heart22');" ></i>
+                                        </div>
+                                    </div>
+                                    
+                                    </div>
+                                
+                                
+                            </li>
+                            <li id = "filterContractors" class= "maplisting all $2 5star 5km utility plumbing electric heating-cooling water-heating" data-clisting = "2">
+                                <div class = "mapInfo">
+                                    <div class = "maplisting1">
+                                        <h2  class = "mapclistingName" id="c12"onclick="gotoc12();">Empire Gen Construction</h2>
+                                        <div class = mapIconInfo>
+                                            <h3 class = "map-price">$$</h3>
+                                            <div class = "map-c-rating">
+                                                <p> 
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                </p>
+                                            </div>
+                                            <i class="fa fa-heart" id="heart23" onclick= "favourite('heart23');" ></i>
+                                        </div>
+                                    </div>
+                                    
+                                    </div>
+                                
+                                
+                            </li>
+    
+                        </ul> 
+
+                    </div>
+                    
+                    <div class = "google-map">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d329324.123307481!2d-97.33027676776808!3d49.84537525237074!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1scontractor!5e0!3m2!1sen!2sca!4v1701391998933!5m2!1sen!2sca" width="800" height="600" style="border:0;" allowfullscreen="" loading="" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                   
+
+
+                </div>
+
+
+                
+           
+           
+            </div>
+        </div>
+        
+    </div>
+    <script src="script.js"></script>
+    </body>
+
+</html>

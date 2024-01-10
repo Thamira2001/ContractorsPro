@@ -1,0 +1,44 @@
+body {
+  height: 100%;
+  margin: 0;
+  background-color: aliceblue;
+}
+
+.mainpage{
+  font-family: Helvetica, sans-serif;
+  font-size: 13px;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-bottom: 40px;
+}
+
+@media screen and (min-width: 900px) {
+  .mainpage {
+    margin-left: 15%; 
+    margin-right: 15%;
+  }
+}
+
+  
+  .register-box {
+    width: fit-content;
+    background-color: rgba(143, 48, 29, 0.572);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    border: solid;
+    font-family: 'Kanit', sans-serif;
+    text-align: center;
+    padding: 50px 60px 70px;
+    background: none;
+    border-radius: 15px;
+  }
+
+  .register-field {
+    height: 35px;
+    max-width: 100%;
+    position: relative;
+    padding: 5px;
+  }
